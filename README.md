@@ -28,28 +28,26 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`twilio-style-cli hello [FILE]`](#twilio-style-cli-hello-file)
+* [`twilio-style-cli migrate`](#twilio-style-cli-migrate)
 * [`twilio-style-cli help [COMMAND]`](#twilio-style-cli-help-command)
 
-## `twilio-style-cli hello [FILE]`
+## `twilio-style-cli migrate`
 
 describe the command here
 
 ```
 USAGE
-  $ twilio-style-cli hello [FILE]
+  $ twilio-style-cli migrate
 
 OPTIONS
-  -f, --force
   -h, --help       show CLI help
-  -n, --name=name  name to print
 
 EXAMPLE
-  $ twilio-style-cli hello
-  hello world from ./src/hello.ts!
+  $ twilio-style-cli migrate
+  hello world
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.0.0/src/commands/migrate.ts)_
 
 ## `twilio-style-cli help [COMMAND]`
 
