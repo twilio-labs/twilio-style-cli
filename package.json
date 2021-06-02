@@ -34,7 +34,6 @@
     "prepare": "husky install",
     "test": "jest",
     "test:ci": "jest --coverage",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
     "version": "oclif-dev readme && git add README.md"
   },
   "dependencies": {
