@@ -3,6 +3,6 @@ import { createTest } from '../framework';
 
 describe('commands/migrate', () => {
   it('should run hello', async () => {
-    const cmd = createTest(Migrate)();
+    const cmd = await createTest(Migrate)();
   });
 });
