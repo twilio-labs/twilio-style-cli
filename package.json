@@ -32,8 +32,8 @@
     "prepack": "npm run build:package && npm run build:readme",
     "postpack": "rm -f oclif.manifest.json",
     "prepare": "husky install",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "test": "jest",
+    "test:ci": "jest --coverage",
     "version": "oclif-dev readme && git add README.md"
   },
   "dependencies": {
@@ -44,15 +44,15 @@
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
-    "@types/chai": "^4.2.18",
-    "@types/mocha": "^8.2.2",
+    "@types/jest": "^26.0.23",
     "@types/node": "^15.6.2",
+    "babel-jest": "^27.0.2",
     "chai": "^4.3.4",
     "eslint": "^7.27.0",
     "eslint-config-twilio-ts": "^1.34.2",
     "husky": "^6.0.0",
-    "mocha": "^8.4.0",
-    "nyc": "^15.1.0",
+    "jest": "^27.0.3",
+    "ts-jest": "^27.0.2",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.2"
   },
