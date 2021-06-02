@@ -48,19 +48,21 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `twilio-style-cli migrate [FILE]`
+## `twilio-style-cli migrate`
 
 Tool to help onboard with Twilio Style
 
 ```
 USAGE
-  $ twilio-style-cli migrate [FILE]
+  $ twilio-style-cli migrate --config [ESLINT_FILE_PATH] --dir [FILE_PATH]
 
 OPTIONS
   -h, --help  show CLI help
+  --config    The path to your eslintrc configuration file
+  --dir       The directory to lint
 
 EXAMPLE
-  $ twilio-style-cli migrate
+  $ twilio-style-cli migrate --config ./eslintrc --dir src/
 ```
 
 _See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.0.0/src/commands/migrate.ts)_
