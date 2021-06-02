@@ -1,20 +1,17 @@
-import { Command, flags } from '@oclif/command';
+import { flags } from '@oclif/command';
 
-export default class Migrate extends Command {
+import { TwilioStyleCommand } from '../core';
+
+export default class Migrate extends TwilioStyleCommand {
   static description = 'Tool to help onboard with Twilio Style';
 
-  static examples = [
-    `$ twilio-style-cli migrate`,
-  ];
+  static examples = [`$ twilio-style-cli migrate`];
 
   static flags = {
     help: flags.help({ char: 'h' }),
   };
 
-  static args = [{ name: 'file' }];
-
-  async run() {
+  async doRun(): Promise<void> {
     this.log('hello world');
-
   }
 }

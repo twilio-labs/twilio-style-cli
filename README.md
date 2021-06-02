@@ -19,7 +19,7 @@ $ npm install -g twilio-style-cli
 $ twilio-style-cli COMMAND
 running command...
 $ twilio-style-cli (-v|--version|version)
-twilio-style-cli/0.0.0 darwin-x64 node-v14.15.1
+twilio-style-cli/0.0.0 darwin-x64 node-v12.18.3
 $ twilio-style-cli --help [COMMAND]
 USAGE
   $ twilio-style-cli COMMAND
@@ -28,26 +28,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`twilio-style-cli migrate`](#twilio-style-cli-migrate)
 * [`twilio-style-cli help [COMMAND]`](#twilio-style-cli-help-command)
-
-## `twilio-style-cli migrate`
-
-describe the command here
-
-```
-USAGE
-  $ twilio-style-cli migrate
-
-OPTIONS
-  -h, --help       show CLI help
-
-EXAMPLE
-  $ twilio-style-cli migrate
-  hello world
-```
-
-_See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.0.0/src/commands/migrate.ts)_
+* [`twilio-style-cli migrate [FILE]`](#twilio-style-cli-migrate-file)
 
 ## `twilio-style-cli help [COMMAND]`
 
@@ -65,4 +47,21 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
+## `twilio-style-cli migrate [FILE]`
+
+Tool to help onboard with Twilio Style
+
+```
+USAGE
+  $ twilio-style-cli migrate [FILE]
+
+OPTIONS
+  -h, --help  show CLI help
+
+EXAMPLE
+  $ twilio-style-cli migrate
+```
+
+_See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.0.0/src/commands/migrate.ts)_
 <!-- commandsstop -->
