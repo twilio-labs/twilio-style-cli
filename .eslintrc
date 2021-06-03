@@ -2,6 +2,9 @@
   "extends": [
     "twilio-ts"
   ],
+  "parserOptions": {
+    "project": "./tsconfig.lint.json"
+  },
   "rules": {
     "import/no-unused-modules": "off"
   }

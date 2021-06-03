@@ -16,28 +16,28 @@ Twilio Style CLI
 <!-- usage -->
 ```sh-session
 $ npm install -g twilio-style-cli
-$ twilio-style-cli COMMAND
+$ twilio-style COMMAND
 running command...
-$ twilio-style-cli (-v|--version|version)
+$ twilio-style (-v|--version|version)
 twilio-style-cli/0.0.0 darwin-x64 node-v12.18.3
-$ twilio-style-cli --help [COMMAND]
+$ twilio-style --help [COMMAND]
 USAGE
-  $ twilio-style-cli COMMAND
+  $ twilio-style COMMAND
 ...
 ```
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`twilio-style-cli help [COMMAND]`](#twilio-style-cli-help-command)
-* [`twilio-style-cli migrate [FILE]`](#twilio-style-cli-migrate-file)
+* [`twilio-style help [COMMAND]`](#twilio-style-help-command)
+* [`twilio-style migrate`](#twilio-style-migrate)
 
-## `twilio-style-cli help [COMMAND]`
+## `twilio-style help [COMMAND]`
 
-display help for twilio-style-cli
+display help for twilio-style
 
 ```
 USAGE
-  $ twilio-style-cli help [COMMAND]
+  $ twilio-style help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -48,21 +48,21 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
 
-## `twilio-style-cli migrate`
+## `twilio-style migrate`
 
 Tool to help onboard with Twilio Style
 
 ```
 USAGE
-  $ twilio-style-cli migrate --config [ESLINT_FILE_PATH] --dir [FILE_PATH]
+  $ twilio-style migrate
 
 OPTIONS
-  -h, --help  show CLI help
-  --config    The path to your eslintrc configuration file
-  --dir       The directory to lint
+  -c, --config=config  (required) The path to your eslint configuration file
+  -d, --dir=dir        (required) The directory to lint
+  -h, --help           show CLI help
 
 EXAMPLE
-  $ twilio-style-cli migrate --config ./eslintrc --dir src/
+  $ twilio-style migrate
 ```
 
 _See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.0.0/src/commands/migrate.ts)_

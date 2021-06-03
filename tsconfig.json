@@ -14,5 +14,13 @@
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "**/__mocks__/*",
+    "**/__tests__/*",
+    "node_modules",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "lib"
   ]
 }
