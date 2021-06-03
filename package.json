@@ -9,17 +9,26 @@
   "bugs": "https://github.com/twilio-labs/twilio-style-cli/issues",
   "repository": "twilio-labs/twilio-style-cli",
   "license": "MIT",
-  "author": "Alice Cai",
+  "contributors": [
+    {
+      "name": "Alice Cai",
+      "email": "ahcai@berkeley.edu"
+    },
+    {
+      "name": "Kousha Talebian",
+      "email": "k@ousha.me"
+    }
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "twilio-style-cli": "./bin/run"
+    "twilio-style": "./bin/run"
   },
   "files": [
-    "/bin",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
+    "bin/",
+    "lib/",
+    "npm-shrinkwrap.json",
+    "oclif.manifest.json"
   ],
   "scripts": {
     "prebuild:package": "npm run clean",
@@ -52,17 +61,14 @@
     "chai": "^4.3.4",
     "eslint-config-twilio-ts": "^1.34.2",
     "husky": "^6.0.0",
-    "jest": "^27.0.3",
+    "jest": "^27.0.4",
     "ts-jest": "^27.0.2",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.2"
   },
-  "engines": {
-    "node": ">=8.0.0"
-  },
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "twilio-style-cli",
+    "bin": "twilio-style",
     "plugins": [
       "@oclif/plugin-help"
     ]
