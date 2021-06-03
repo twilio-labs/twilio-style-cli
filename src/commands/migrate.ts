@@ -10,7 +10,7 @@ import { TwilioStyleCommand } from '../core';
 export default class Migrate extends TwilioStyleCommand {
   static description = 'Tool to help onboard with Twilio Style';
 
-  static examples = [`$ twilio-style migrate`];
+  static examples = [`$ twilio-style migrate --config .eslintrc.json --dir src/`];
 
   static flags = {
     help: flags.help({ char: 'h' }),
