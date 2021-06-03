@@ -28,16 +28,20 @@ export default class Migrate extends TwilioStyleCommand {
     }),
     dir: flags.string({
       required: true,
-      description: 'The directory to lint',
+      description: 'The directory/path to lint',
       char: 'd',
+    }),
+    'ignore-pattern': flags.string({
+      multiple: true,
+      description: 'The directory/path to ignore when linting',
+      char: 'i',
     }),
   };
 
   async doRun(): Promise<void> {
     this.log(`Running linter on ${this.flags.dir}`);
 
-    const { configPath } = this;
-    const eslint = new ESLint({ overrideConfigFile: configPath });
+    const eslint = this.getESLintEngine();
     const config: Linter.BaseConfig = this.parseConfiguration();
     const results = await eslint.lintFiles(this.flags.dir);
     this.log('Setting linting errors as warn');
@@ -53,6 +57,25 @@ export default class Migrate extends TwilioStyleCommand {
     });
 
     this.updateConfiguration(config);
+  }
+
+  /**
+   * Creates an ESLint engine
+   * @private
+   */
+  private getESLintEngine(): ESLint {
+    const options: ESLint.Options = { overrideConfigFile: this.configPath };
+    if (this.flags['ignore-pattern']) {
+      if (!options.overrideConfig) {
+        options.overrideConfig = {};
+      }
+      if (!options.overrideConfig.ignorePatterns) {
+        options.overrideConfig.ignorePatterns = [];
+      }
+      (options.overrideConfig.ignorePatterns as string[]).push(...this.flags['ignore-pattern']);
+    }
+
+    return new ESLint(options);
   }
 
   /**
@@ -90,7 +113,7 @@ export default class Migrate extends TwilioStyleCommand {
       return require(configPath);
     }
 
-    this.error(`Unsupported file: ${configPath`);
+    this.error(`Unsupported file: ${configPath}`);
     this.exit(1);
   }
 
