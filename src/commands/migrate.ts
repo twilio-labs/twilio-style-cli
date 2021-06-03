@@ -131,6 +131,7 @@ export default class Migrate extends TwilioStyleCommand {
   /**
    * Returns full path to the configuration
    */
+  /* istanbul ignore next */
   get configPath(): string {
     return TwilioStyleCommand.resolve(this.flags.config);
   }
