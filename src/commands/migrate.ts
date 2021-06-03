@@ -34,6 +34,7 @@ export default class Migrate extends TwilioStyleCommand {
       config = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
     } catch (error) {
       this.log(`Unable to read or parse ${configFilePath}`, error);
+      this.exit(1);
     }
 
     config.rules = config.rules || {};
@@ -52,6 +53,7 @@ export default class Migrate extends TwilioStyleCommand {
       this.log(`Successfully wrote rule overrides to ${configFilePath}`);
     } catch (error) {
       this.log(`Unable to write to ${configFilePath}`, error);
+      this.exit(1);
     }
   }
 }
