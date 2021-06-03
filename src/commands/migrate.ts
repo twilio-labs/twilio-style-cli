@@ -1,7 +1,9 @@
 import * as fs from 'fs';
 
+import { OutputFlags } from '@oclif/parser/lib/parse';
 import { flags } from '@oclif/command';
 import { ESLint, Linter } from 'eslint';
+import { CLIError } from '@oclif/errors';
 
 import { TwilioStyleCommand } from '../core';
 
@@ -16,6 +18,13 @@ export default class Migrate extends TwilioStyleCommand {
       required: true,
       description: 'The path to your eslint configuration file',
       char: 'c',
+      parse: (input) => {
+        if (!fs.existsSync(TwilioStyleCommand.resolve(input))) {
+          throw new CLIError(`Configuration ${input} does not exist`, { exit: 1 });
+        }
+
+        return input;
+      },
     }),
     dir: flags.string({
       required: true,
@@ -25,20 +34,14 @@ export default class Migrate extends TwilioStyleCommand {
   };
 
   async doRun(): Promise<void> {
-    const { flags } = this.parse(Migrate);
-    const configFilePath = flags.config;
-    const eslint = new ESLint({ overrideConfigFile: configFilePath });
+    this.log(`Running linter on ${this.flags.dir}`);
 
-    let config: Linter.BaseConfig;
-    try {
-      config = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
-    } catch (error) {
-      this.log(`Unable to read or parse ${configFilePath}`, error);
-      this.exit(1);
-    }
+    const { configPath } = this;
+    const eslint = new ESLint({ overrideConfigFile: configPath });
+    const config: Linter.BaseConfig = this.parseConfiguration();
+    const results = await eslint.lintFiles(this.flags.dir);
+    this.log('Setting linting errors as warn');
 
-    config.rules = config.rules || {};
-    const results = await eslint.lintFiles(flags.dir);
     ESLint.getErrorResults(results).forEach((e) => {
       e.messages.forEach((m: Linter.LintMessage) => {
         config.rules = config.rules || {};
@@ -49,13 +52,67 @@ export default class Migrate extends TwilioStyleCommand {
       });
     });
 
-    const updatedConfig = JSON.stringify(config, null, 2);
-    try {
-      fs.writeFileSync(configFilePath, updatedConfig);
-      this.log(`Successfully wrote rule overrides to ${configFilePath}`);
-    } catch (error) {
-      this.log(`Unable to write to ${configFilePath}`, error);
-      this.exit(1);
+    this.updateConfiguration(config);
+  }
+
+  /**
+   * Updates the configuration is possible, otherwise prints instruction to do so manually
+   * @param config  the ESLint configuration to update
+   * @private
+   */
+  private updateConfiguration(config: Linter.BaseConfig): void {
+    if (this.isConfigurationUpdatable()) {
+      fs.writeFileSync(this.configPath, TwilioStyleCommand.jsonPretty(config));
+      this.log(`Successfully updated rules overrides`);
+      return;
     }
+
+    this.log(
+      `Successfully computed new configuration rules. Please update your ${this.configPath} rules with the following:`,
+    );
+    this.log(TwilioStyleCommand.jsonPretty(config.rules));
+  }
+
+  /**
+   * Parses the ESLint configuration of a variety format
+   * @private
+   */
+  // eslint-disable-next-line consistent-return
+  private parseConfiguration(): Linter.BaseConfig {
+    const { configPath } = this;
+
+    if (configPath.endsWith('.json') || configPath.endsWith('rc')) {
+      return JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    }
+
+    if (configPath.endsWith('.js')) {
+      // eslint-disable-next-line global-require, @typescript-eslint/no-require-imports
+      return require(configPath);
+    }
+
+    this.error(`Unsupported ${configPath} file`);
+    this.exit(1);
+  }
+
+  /**
+   * Determines whether the file can be updated or not
+   */
+  private isConfigurationUpdatable(): boolean {
+    return !this.configPath.endsWith('.js');
+  }
+
+  /**
+   * Returns full path to the configuration
+   */
+  get configPath(): string {
+    return TwilioStyleCommand.resolve(this.flags.config);
+  }
+
+  /**
+   * Parses the flags passed to this command
+   */
+  /* istanbul ignore next */
+  get flags(): OutputFlags<typeof Migrate.flags> {
+    return this.parse(Migrate).flags;
   }
 }
