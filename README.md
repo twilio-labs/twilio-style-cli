@@ -19,7 +19,7 @@ $ npm install -g twilio-style-cli
 $ twilio-style COMMAND
 running command...
 $ twilio-style (-v|--version|version)
-twilio-style-cli/0.0.0 darwin-x64 node-v12.18.3
+twilio-style-cli/0.1.0 darwin-x64 node-v12.18.3
 $ twilio-style --help [COMMAND]
 USAGE
   $ twilio-style COMMAND
@@ -57,13 +57,14 @@ USAGE
   $ twilio-style migrate
 
 OPTIONS
-  -c, --config=config  (required) The path to your eslint configuration file
-  -d, --dir=dir        (required) The directory to lint
-  -h, --help           show CLI help
+  -c, --config=config                  (required) The path to your eslint configuration file
+  -d, --dir=dir                        (required) The directory/path to lint
+  -h, --help                           show CLI help
+  -i, --ignore-pattern=ignore-pattern  The directory/path to ignore when linting
 
 EXAMPLE
   $ twilio-style migrate
 ```
 
-_See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.0.0/src/commands/migrate.ts)_
+_See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.1.0/src/commands/migrate.ts)_
 <!-- commandsstop -->
