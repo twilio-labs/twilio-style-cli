@@ -28,32 +28,30 @@ export default class Migrate extends TwilioStyleCommand {
     const { flags } = this.parse(Migrate);
     const configFilePath = flags.config;
     const eslint = new ESLint({ overrideConfigFile: configFilePath });
-    const errorRules = new Set<string>();
 
+    let config: any;
+    try {
+      config = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
+    } catch (error) {
+      this.log(`Unable to read or parse ${configFilePath}`, error);
+    }
+
+    config.rules = config.rules || {};
     const results = await eslint.lintFiles(flags.dir);
-    const errors = ESLint.getErrorResults(results);
-    errors.forEach((error) => {
-      error.messages.forEach((message: Linter.LintMessage) => {
-        if (message.ruleId) {
-          errorRules.add(message.ruleId);
+    ESLint.getErrorResults(results).forEach((e) => {
+      e.messages.forEach((m: Linter.LintMessage) => {
+        if (m.ruleId && !config.rules[m.ruleId]) {
+          config.rules[m.ruleId] = 'warn';
         }
       });
     });
 
-    const config = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
-    const updatedRules = config.rules || {};
-    errorRules.forEach((rule: string) => {
-      updatedRules[rule] = 'warn';
-    });
-    config.rules = updatedRules;
     const updatedConfig = JSON.stringify(config, null, 2);
-
-    fs.writeFile(configFilePath, updatedConfig, 'utf8', (error) => {
-      if (error) {
-        this.log(`Unable to write to ${configFilePath}`, error);
-      } else {
-        this.log(`Successfully wrote rule overrides to ${configFilePath}`);
-      }
-    });
+    try {
+      fs.writeFileSync(configFilePath, updatedConfig);
+      this.log(`Successfully wrote rule overrides to ${configFilePath}`);
+    } catch (error) {
+      this.log(`Unable to write to ${configFilePath}`, error);
+    }
   }
 }
