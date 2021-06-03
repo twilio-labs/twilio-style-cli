@@ -8,7 +8,7 @@ import { TwilioStyleCommand } from '../core';
 export default class Migrate extends TwilioStyleCommand {
   static description = 'Tool to help onboard with Twilio Style';
 
-  static examples = [`$ twilio-style-cli migrate`];
+  static examples = [`$ twilio-style migrate`];
 
   static flags = {
     help: flags.help({ char: 'h' }),
@@ -29,7 +29,7 @@ export default class Migrate extends TwilioStyleCommand {
     const configFilePath = flags.config;
     const eslint = new ESLint({ overrideConfigFile: configFilePath });
 
-    let config: any;
+    let config: Linter.BaseConfig;
     try {
       config = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
     } catch (error) {
@@ -41,6 +41,8 @@ export default class Migrate extends TwilioStyleCommand {
     const results = await eslint.lintFiles(flags.dir);
     ESLint.getErrorResults(results).forEach((e) => {
       e.messages.forEach((m: Linter.LintMessage) => {
+        config.rules = config.rules || {};
+
         if (m.ruleId && !config.rules[m.ruleId]) {
           config.rules[m.ruleId] = 'warn';
         }
