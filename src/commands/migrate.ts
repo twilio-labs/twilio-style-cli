@@ -90,7 +90,7 @@ export default class Migrate extends TwilioStyleCommand {
       return require(configPath);
     }
 
-    this.error(`Unsupported ${configPath} file`);
+    this.error(`Unsupported file: ${configPath`);
     this.exit(1);
   }
 
