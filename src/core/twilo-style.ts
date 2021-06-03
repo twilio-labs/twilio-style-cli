@@ -18,7 +18,7 @@ export default abstract class TwilioStyleCommand extends Command {
    * Pretty prints a JSON object
    * @param input the input to print pretty
    */
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-module-boundary-types
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
   static jsonPretty(input: any): string {
     return JSON.stringify(input, null, 2);
   }
