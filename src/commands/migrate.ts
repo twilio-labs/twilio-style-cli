@@ -66,16 +66,9 @@ export default class Migrate extends TwilioStyleCommand {
   private getESLintEngine(): ESLint {
     const options: ESLint.Options = { overrideConfigFile: this.configPath };
     if (this.flags['ignore-pattern']) {
-      if (!options.overrideConfig) {
-        options.overrideConfig = {};
-      }
-      if (!options.overrideConfig.ignorePatterns) {
-        options.overrideConfig.ignorePatterns = [];
-      }
-      if (typeof options.overrideConfig.ignorePatterns === 'string') {
-        options.overrideConfig.ignorePatterns = [options.overrideConfig.ignorePatterns];
-      }
-      options.overrideConfig.ignorePatterns.push(...this.flags['ignore-pattern']);
+      options.overrideConfig = {
+        ignorePatterns: this.flags['ignore-pattern'],
+      };
     }
 
     return new ESLint(options);
