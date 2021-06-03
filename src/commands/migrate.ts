@@ -8,7 +8,8 @@ import { CLIError } from '@oclif/errors';
 import { TwilioStyleCommand } from '../core';
 
 export default class Migrate extends TwilioStyleCommand {
-  static description = 'Tool to help onboard with Twilio Style';
+  static description =
+    'Tool to help onboard with Twilio Style; useful for big projects with many lint errors. This command will run the linter for the directory/path provided, take the list of errors and add them as warning overrides in your eslint configuration.';
 
   static examples = [`$ twilio-style migrate --config .eslintrc.json --dir src/`];
 
