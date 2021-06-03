@@ -56,7 +56,7 @@ export default class Migrate extends TwilioStyleCommand {
   }
 
   /**
-   * Updates the configuration is possible, otherwise prints instruction to do so manually
+   * Updates the configuration if possible, otherwise prints instruction to do so manually
    * @param config  the ESLint configuration to update
    * @private
    */
