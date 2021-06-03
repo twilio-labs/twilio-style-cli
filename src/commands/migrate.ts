@@ -26,6 +26,11 @@ export default class Migrate extends TwilioStyleCommand {
         return input;
       },
     }),
+    extensions: flags.string({
+      multiple: true,
+      description: 'The file extensions to test',
+      char: 'e',
+    }),
     dir: flags.string({
       required: true,
       description: 'The directory/path to lint',
@@ -69,6 +74,9 @@ export default class Migrate extends TwilioStyleCommand {
       options.overrideConfig = {
         ignorePatterns: this.flags['ignore-pattern'],
       };
+    }
+    if (this.flags.extensions) {
+      options.extensions = this.flags.extensions;
     }
 
     return new ESLint(options);
