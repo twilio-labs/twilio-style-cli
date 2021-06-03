@@ -1,4 +1,5 @@
 module.exports = {
+    testRunner: 'jest-jasmine2',
     collectCoverage: false,
     coverageReporters: ['json', 'text'],
     coverageDirectory: '<rootDir>/coverage',

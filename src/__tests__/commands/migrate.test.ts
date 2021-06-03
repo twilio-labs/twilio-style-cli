@@ -1,8 +1,17 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Migrate from '../../commands/migrate';
 import { createTest } from '../framework';
 
 describe('commands/migrate', () => {
-  it('should run hello', async () => {
-    const cmd = await createTest(Migrate)();
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
+  describe('isConfigurationUpdatable', () => {
+    it('should be true', async () => {
+      const cmd = await createTest(Migrate)('--config', '.eslintrc', '--dir', 'src');
+      // @ts-ignore
+      expect(cmd.isConfigurationUpdatable()).toEqual(true);
+    });
   });
 });
