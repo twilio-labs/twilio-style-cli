@@ -1,13 +1,11 @@
 twilio-style-cli
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 ================
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/twilio-style-cli.svg)](https://npmjs.org/package/twilio-style-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/twilio-style-cli.svg)](https://npmjs.org/package/twilio-style-cli)
 [![License](https://img.shields.io/npm/l/twilio-style-cli.svg)](https://github.com/twilio-labs/twilio-style-cli/blob/master/package.json)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
 CLI for [Twilio Style](https://github.com/twilio-labs/twilio-style).
 
