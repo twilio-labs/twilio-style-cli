@@ -73,6 +73,10 @@ EXAMPLE
 _See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style-cli/blob/v0.1.1/src/commands/migrate.ts)_
 <!-- commandsstop -->
 
+## Contributing
+
+Check out [CONTRIBUTING](CONTRIBUTING.md) for more information on how to contribute to this project.
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
