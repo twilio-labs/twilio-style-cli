@@ -5,6 +5,7 @@ twilio-style-cli
 [![Version](https://img.shields.io/npm/v/twilio-style-cli.svg)](https://npmjs.org/package/twilio-style-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/twilio-style-cli.svg)](https://npmjs.org/package/twilio-style-cli)
 [![License](https://img.shields.io/npm/l/twilio-style-cli.svg)](https://github.com/twilio-labs/twilio-style-cli/blob/master/package.json)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
 CLI for [Twilio Style](https://github.com/twilio-labs/twilio-style).
 
@@ -73,3 +74,23 @@ _See code: [src/commands/migrate.ts](https://github.com/twilio-labs/twilio-style
 ## Contributing
 
 Check out [CONTRIBUTING](CONTRIBUTING.md) for more information on how to contribute to this project.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/ahcai"><img src="https://avatars.githubusercontent.com/u/4912483?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alice Cai</b></sub></a><br /><a href="https://github.com/twilio-labs/twilio-style-cli/commits?author=ahcai" title="Code">💻</a> <a href="https://github.com/twilio-labs/twilio-style-cli/pulls?q=is%3Apr+reviewed-by%3Aahcai" title="Reviewed Pull Requests">👀</a> <a href="#ideas-ahcai" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
