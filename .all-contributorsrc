@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ktalebian",
+      "name": "Kousha Talebian",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2308915?v=4",
+      "profile": "https://github.com/ktalebian",
+      "contributions": [
+        "code",
+        "review",
+        "ideas"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "twilio-style-cli",
+  "projectOwner": "twilio-labs",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
