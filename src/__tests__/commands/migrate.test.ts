@@ -9,7 +9,7 @@ describe('commands/migrate', () => {
 
   describe('isConfigurationUpdatable', () => {
     it('should be true', async () => {
-      const cmd = await createTest(Migrate)('--config', '.eslintrc', '--dir', 'src');
+      const cmd = await createTest(Migrate)('--config', '.eslintrc.json', '--dir', 'src');
       // @ts-ignore
       expect(cmd.isConfigurationUpdatable()).toEqual(true);
     });
